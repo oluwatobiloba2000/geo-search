@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
     <link rel="shortcut icon" href="./UI/img/geo-search-icon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./UI/styles/loader.css">
     <link rel="stylesheet" href="./UI/styles/dashboard-styles.css">
     <title>Geo Search || search location</title>
 </head>
 
 <body>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1732816256851456&autoLogAppEvents=1"></script>
     <header>
         <nav>
-            <a class="navbar__brand" href="dashboard.html">
+            <a class="navbar__brand" href="./index.html">
                 <img src="./UI/img/geo-search-logo_upscaled_illustration_x4.jpg" alt="logo">
                 <span>Geo search</span>
             </a>
@@ -34,7 +40,7 @@
                     <li class="nav__item search__container">
                         <img class="search__bar__icon" src="https://img.icons8.com/android/24/000000/search.png">
                         <input type="text" name="search__bar" placeholder="Search for a location" id="search__bar">
-                        <button type="submit" id="search__btn">Search</button>
+                        <button type="submit" class="search__btn" id="search__btn">Search</button>
                     </li>
 
                     <!-- <li class="nav__item logged__in__user">
@@ -47,21 +53,23 @@
                     </li> -->
                     <span id="hover__nav">
                         <img src="./UI/img/angle-arrow-down.svg" alt="arrow down icon">
-                    <div class="dropdown-background">
-                        <div class="dropdown bio">
-                            <div class="triangle-up"></div>
-                            <p>This project was done by Anani oluwatobiloba</p>
-                            <p>&copy; 2019</p>
-                            <button class="social__btn">
-                                <a target="_blank" href="https://github.com/oluwatobiloba2000">Github</a></button>
-                            <button class="social__btn">
-                                <a target="_blank" href="#">Facebook</a>
-                            </button>
-                            <button class="social__btn">
-                                <a target="_blank" href="#">Twitter</a>
-                            </button>
+                        <div class="dropdown-background">
+                            <div class="dropdown bio">
+                                <div class="triangle-up"></div>
+                                <p>This project was made by Anani oluwatobiloba</p>
+                                <p>&copy; 2019</p><br>
+                                <span>My social Media Links</span>
+                                <button class="social__btn">
+                                    <a target="_blank" href="https://github.com/oluwatobiloba2000">Github</a></button>
+                                <button class="social__btn">
+                                    <a target="_blank" href="https://facebook.com/oluwatobi.anani.9">Facebook</a>
+                                </button>
+                                <button class="social__btn">
+                                    <a target="_blank" href="https://twitter.com/Anani_oluwatobi">Twitter</a>
+                                </button>
+                            </div>
                         </div>
-                    </div></span>
+                    </span>
                 </ul>
             </div>
         </nav>
@@ -69,83 +77,97 @@
             <!-- THIS IS THE RIGHT NAV BAR -->
             <ul class="navbar__nav second__navbar__nav">
                 <span class="share__wrapper">
-                    <i class="fas fa-share-alt"></i>
+                    <div class="fb-like" data-href="https://oluwatobiloba2000.github.io/geo-search/" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                    </div>
+                    <!-- <i class="fas fa-share-alt"></i>
                     <div class="triangle-left"></div>
                     <span class="facebook__share__icon__wrapper">
                         <i class="fab fa-facebook-square"></i>
-                    </span><span class="share__text">share on facebook</span>
+                    </span><span class="share__text">share on facebook</span> -->
                 </span>
             </ul>
         </div>
     </header>
 
     <section class="section">
+            <div class="spinner">
+                <span class="logo__container">
+                    <img src="./UI/img/geo-search-logo_upscaled_illustration_x4.jpg" alt="logo">
+                    <span class="logo__text">Geo search</span>
+                </span>
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                   <span class="loading__text">Loading.....  Please wait</span>
+            </div>
         <div class="left__div">
             <div class="weather__result__container">
                 <h1 class="city__name__h1">
                     <i class="fas fa-map-marker-alt"></i>
                     <span class="bottom__navigation__span"></span>
-                    Banana Island, Lagos
+                    <span class="city__name"></span>
                 </h1>
                 <div>
                     <p class="date__dashboard">
-                        <span class="weather__icon">
-                            <img src="http://openweathermap.org/img/w/10n.png" alt="cloudy">
-                        </span>
-                        <span class="today">Today</span> <br />
-                        <span class="today__date__words">Thu Oct 31 2019</span>
+                        <span class="weather__icon"></span>
+                        <span class="today"></span> <br />
+                        <span class="today__date__words"></span>
                     </p>
-                    <p class="weather__degree">28°C</p>
+                    <p class="weather__degree"></p>
                     <p class="temp__scale__btn">
-                      <button class="active" id="Celsius">°C</button>
-                      <button class="not-active" id="Fahrenheit">°F</button>
+       
                     </p>
-                    <p class="description__details">Clear Sky</p>
-                    <p class="pressure__details"><img  src="./UI/img/gauge.svg" alt="pressure icon">Pressure &nbsp;<span id="current__pressure">1011 hpa</span></p>
-                    <p class="humidity__details"><img src="./UI/img/humidity.svg" alt="">Humidity &nbsp;<span id="current__humidity">83%</span></p>
+                    <p class="weather__description__details description__details"></p>
+                    <p class="pressure__details"></p>
+                    <p class="humidity__details"></p>
+                    <p id="postal__code" class="description__details"></p>
                 </div>
                 <span class="view__map__mobile">
                     <a href="#map">View map for this location</a>
                 </span>
                 <div class="location__images">
-                        <img class="image__location" src="https://www.nairaland.com/attachments/1937814_article224819816849AF7000005DC321634x435_jpg01078127de97ef001352ab7c21da323a" alt="">
-                    <img class="image__location" src="https://www.nairaland.com/attachments/1937816_dsc0052_jpeg39df678e020d2f002ab1bdce244b5866" alt="">
+                    <!-- <img class="image__location" src="https://www.nairaland.com/attachments/1937814_article224819816849AF7000005DC321634x435_jpg01078127de97ef001352ab7c21da323a" alt="">
+                    <img class="image__location" src="https://www.nairaland.com/attachments/1937816_dsc0052_jpeg39df678e020d2f002ab1bdce244b5866" alt=""> -->
                 </div>
             </div>
 
         </div>
+        <div class="error__loader">
+        <button class="close__loader__btn">X</button>
+        <img class="error__loader__svg" src="./UI/img/undraw_weather_app_i5sm.svg" alt="svg image">
+        <!-- chase loader starts -->
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div>
+        <!-- chase loader ends -->
+     <div class="alert__container">
+        <!-- <button class="buttonload">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+          </button> -->
+     </div>
+            <!-- <div class="waiting">
+                <p>waiting for weather data <i class="far fa-dot-circle"></i></p>
+            </div> -->
+        </div>
         <!-- -----------------MAP ARENA STARTS ---------------------- -->
         <div id="map" class="right__div">
-            <div class="mapouter">
-                <div class="gmap_canvas"><iframe width="750" height="500" id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=Lagos%2C%20banana%20island&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator
-                    by <a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div>
-                <style>
-                    .mapouter {
-                        position: relative;
-                        text-align: right;
-                        height: 500px;
-                        width: 750px;
-                    }
-
-                    .gmap_canvas {
-                        overflow: hidden;
-                        background: none !important;
-                        height: 500px;
-                        width: 750px;
-                    }
-                </style>
-            </div>
         </div>
     </section>
     <footer></footer>
+
+
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfV-yKThJMx3FJcPrYzinBiaZtCIulIfA&libraries=places">
+    </script>
+    <script src="./UI/scripts/placeApi.js"></script>
+    <script src="./UI/scripts/fb-share.js"></script>
 </body>
 
 </html>
-<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a
-        href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
-<!-- <svg width="137" height="182" class="svg__case__container" style="position: absolute;">
-        <rect position="absolute" width="100%" height="100%" class="lineRect" fill="none" stroke="#ABB0B6" stroke-width="1" stroke-dasharray="5, 5">
-        </rect>
-    </svg> -->
