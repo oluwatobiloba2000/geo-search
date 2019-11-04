@@ -478,7 +478,7 @@ iframe {
 .logo__container img {
     width: 140px;
     transition: 1s ease;
-    animation: opacity 2.2s infinite ease-in-out;
+    /* animation: opacity 2.2s infinite ease-in-out; */
 }
 
 .logo__text {
@@ -537,7 +537,7 @@ iframe {
     opacity: 1;
 }
 
-@keyframes opacity{
+/* @keyframes opacity{
     0%{
         transform: translateY(0);
     }50%{
@@ -545,7 +545,7 @@ iframe {
     }100%{
         transform: translateY(0);
     }
-}
+} */
 
 
 @media (max-width: 800px) {
