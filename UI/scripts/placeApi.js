@@ -267,7 +267,7 @@ function getWeather(lat, lon) {
 
     console.log('LOADING WEATHER DATA ...............')
     var key = '820fbadeb36dd9e325e2ede7deca57b5';
-    fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
         .then(function (resp) {
             return resp.json() // Convert data to json
         })
