@@ -137,20 +137,13 @@ function fetchData() {
             ActivityLogLoader('', 'close')
             return OkayStatusLog(`Welcome to Geo search <br> To get started, type in an address eg.<strong>[cityname],[state],[country]</strong> and you will see the current weather
         forcast, map view of the location.
-        <br> To search click on the search button or press 'ENTER' key on your keyboard
+        <br> To search click on the search button or press 'ENTER' key on your keyboard <br />
+        Please dont forget to leave a like [Just click on the like button when you see it, Thanks! 🙂]
         <br /> This app was made by Anani Oluwatobiloba`);
         }
 
         input.value = usersearchQuery
         WaitingStatusLog('Processing your request...');
-
-        TODO: //DELETE THIS IS CODE DOES NOT BREAK-----------------------
-        // //   Retrieve the target element for the map:
-        // var targetElement = document.getElementById('map');
-
-        // //   Get default map types from the platform object:
-        // var defaultLayers = platform.createDefaultLayers();
-   //--------------------------------------------------- ----------------------------------------
 
           // Create the parameters for the geocoding request:
         var geocodingParams = {
