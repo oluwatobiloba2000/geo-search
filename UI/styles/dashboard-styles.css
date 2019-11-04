@@ -252,13 +252,6 @@ nav {
     color: #3a559f;
 }
 
-.share__wrapper {
-    display: none;
-    width: 50%;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-}
 
 .facebook__share__icon__wrapper {
     height: 35px;
@@ -615,11 +608,6 @@ iframe {
 }
 
 @media (max-width: 700px) {
-    .share__wrapper {
-        width: 42%;
-        font-size: 11px;
-    }
-
     .section {
         flex-direction: column;
     }

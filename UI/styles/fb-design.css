@@ -1,0 +1,12 @@
+.pluginFacepileConnectFirst img {
+    border-radius: 20px;
+    margin-bottom: 8px;
+    margin-right: 7px;
+}
+.share__wrapper {
+        display: none;
+        width: 100%;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+ }
