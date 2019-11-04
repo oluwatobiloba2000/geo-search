@@ -247,50 +247,10 @@ nav {
     background-image: linear-gradient(to bottom right, #e01a4f, #f4c91b, #f4c91b, #c7c7c7);
 }
 
-.fa-share-alt {
-    font-size: 30px;
-    color: #3a559f;
-}
-
-
-.facebook__share__icon__wrapper {
-    height: 35px;
-    background-color: #3a559f;
-    color: aliceblue;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    border-radius: 4px;
-    width: 35px;
-}
-
 .second__navbar__nav {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-}
-
-.triangle-left {
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-right: 12px solid #3a559f;
-    border-bottom: 10px solid transparent;
-}
-
-.share__text {
-    margin-left: 2px;
-    border: 1px solid #3a559f;
-    border-radius: 20px;
-    padding: 5px;
-    color: #3a559f;
-    background-color: #fff;
-    transition: 1s ease;
-}
-
-.facebook__share__icon__wrapper:hover~.share__text {
-    transform: translateX(10px);
 }
 
 .section {
@@ -659,14 +619,7 @@ iframe {
     }
 }
 
-@media (max-width: 500px) {
 
-    .fa-share-alt,
-    .triangle-left,
-    .facebook__share__icon__wrapper {
-        display: none;
-    }
-}
 
 @media (max-width: 460px) {
     #hover__nav {
