@@ -86,6 +86,7 @@
 
 .loading__text{
     width: 100%;
+    font-family: 'Lobster', cursive;
     display: inline-block;
     font-size: 36px;
     color: #551a8b;
