@@ -85,20 +85,20 @@
 }
 
 .loading__text{
-    width: 100%;
-    font-family: 'Lobster', cursive;
-    display: inline-block;
-    font-size: 36px;
-    color: #551a8b;
-    animation: opacity 1.2s infinite ease-in-out;
+  width: 100%;
+  font-family: 'Lobster', cursive;
+  display: inline-block;
+  font-size: 36px;
+  color: #551a8b;
+  animation: opacityText 1.2s infinite ease-in-out;
 }
 
-@keyframes opacity{
-  50% {
-      opacity: 0.5;
-    } 100%, 0% {
-     opacity: 1;
-    } 
+@keyframes opacityText{
+50% {
+    opacity: 0.5;
+  } 100%, 0% {
+   opacity: 1;
+  } 
 }
 .close__loader__btn{
     display: none;
