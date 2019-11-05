@@ -267,7 +267,7 @@ function getWeather(lat, lon) {
             const description = data.weather[0].description;
             const icon = data.weather[0].icon;
             const date = new Date().toDateString();
-            document.querySelector('.weather__icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="${description}">`;
+            document.querySelector('.weather__icon').innerHTML = `<img src="https://openweathermap.org/img/w/${icon}.png" alt="${description}">`;
             document.querySelector('.today').innerText = `Today`
             document.querySelector('.today__date__words').innerHTML = `${date}`;
             document.querySelector('.temp__scale__btn').innerHTML = `<div class="tooltip">
