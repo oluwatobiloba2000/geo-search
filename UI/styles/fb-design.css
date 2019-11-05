@@ -8,3 +8,9 @@
     width: 50% !important;
     height: 56% !important;
 }
+.fb-share-button span{
+    width: 26%;
+    height: 32px;
+    top: 3px;
+    right: -262px;
+}
