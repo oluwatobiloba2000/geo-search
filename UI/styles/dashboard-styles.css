@@ -265,6 +265,10 @@ nav {
     position: relative;
     width: 52%;
 }
+.right__div img{
+    width: 100%;
+    height: 100%;
+}
 
 .date__dashboard {
     text-align: center;
@@ -545,6 +549,11 @@ iframe {
     }
 } */
 
+
+.smile__emoji{
+    font-size: 26px;
+    color: #008000;
+}
 
 @media (max-width: 800px) {
     .right__navbar {
