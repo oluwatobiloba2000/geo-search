@@ -262,10 +262,12 @@ function FbShareDescription(){
         const fahrenheitDB = Math.round(((parseFloat(weatherData.main.temp) - 273.15) * 1.8) + 32);
         const descriptionDB = weatherData.weather[0].description;
 
+        const url = `https://geo-search.netlify.com`
+        const title = `Geo Search || search for any location`
         const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperatureDB}°C/${fahrenheitDB}°F, current weather condition  ${descriptionDB}`;
         const image = `${mapImagefromdb.url}`;
 
-        shareOverrideOGMeta(ogDescription,image);
+        shareOverrideOGMeta(url, title, ogDescription,image);
 
 //    $('meta[property="og:image"]').replaceWith(`<meta property="og:image" content="${mapImage}">`);
 //    $('meta[property="og:description"]').replaceWith(`<meta property="og:description" content="The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com">`);
@@ -285,13 +287,15 @@ function FbShareDescription(){
 //   document.getElementsByTagName('head')[0].appendChild(metaForWeatherDescription);
 }
 
-function shareOverrideOGMeta(overrideDescription, overrideImage)
+function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, overrideImage)
 {
     FB.ui({
         method: 'share_open_graph',
         action_type: 'og.likes',
         action_properties: JSON.stringify({
             object: {
+                'og:url': overrideLink,
+                'og:title': overrideTitle,
                 'og:description': overrideDescription,
                 'og:image': overrideImage
             }
