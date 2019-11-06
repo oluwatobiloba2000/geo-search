@@ -259,7 +259,7 @@ const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
   const metaForWeatherDescription = document.createElement('meta');
   metaForWeatherDescription.setAttribute('property', 'content')
   metaForWeatherDescription.property = "og:description";
-  metaForWeatherDescription.content = `The weather condition in ${placesearchQuery} is ${celciusTemperature}/${fahrenheit}, ${description} Source :- https://geo-search.netlify.com`;
+  metaForWeatherDescription.content = `The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com`;
   document.getElementsByTagName('head')[0].appendChild(metaForWeatherDescription);
 }
 
@@ -288,7 +288,7 @@ function getWeather(lat, lon, mapImage) {
             const icon = data.weather[0].icon;
             const date = new Date().toDateString();
 
-               FbShareDescription(mapImage, celciusTemperature, fahrenheit, description);
+               FbShareDescription(mapImage.url, celciusTemperature, fahrenheit, description);
 
             document.querySelector('.weather__icon').innerHTML = `<img src="https://openweathermap.org/img/w/${icon}.png" alt="${description}">`;
             document.querySelector('.today').innerText = `Today`
