@@ -13,9 +13,12 @@
     height: 61% !important;
     top: 3px;
     right: -95px;
+    position: initial !important;
 }
 
 .fb-share-button span iframe{
+    top: 0;
     width: 58% !important;
-    height: 100% !important;
+    height: 109% !important;
+    bottom: 0;
 }
