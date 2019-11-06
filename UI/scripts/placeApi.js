@@ -221,7 +221,7 @@ function fetchData() {
                 OkayStatusLog('Map loaded sucessfully ..............');
                 mapContainer.innerHTML =`<img src="${data.url}" alt="map showing the place you searched">`
 
-                localStorage.setItem('mapImage', JSON.stringify(data))
+                localStorage.setItem('mapImage', JSON.stringify(data.url))
                 getWeather(lat, lng);
             }).catch(function(e){
                 searchButtonLoader('', 'remove__loader');
@@ -265,7 +265,7 @@ function FbShareDescription(){
         const url = `https://geo-search.netlify.com`
         const title = `Geo Search || search for any location`
         const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperatureDB}°C/${fahrenheitDB}°F, current weather condition  ${descriptionDB}`;
-        const image = `${mapImagefromdb.url}`;
+        const image = `${mapImagefromdb}`;
 
         shareOverrideOGMeta(url, title, ogDescription,image);
 
@@ -302,7 +302,7 @@ function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, o
         })
     },
     function (response) {
-        OkayStatusLog(response);
+        return
     // Action after response
     });
 }
