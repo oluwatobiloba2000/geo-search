@@ -310,6 +310,7 @@ function getWeather(lat, lon, mapImage) {
         .catch(function (e) {
             // catch any errors
             setTimeout(() => {
+                ActivityLogLoader('open')
                 searchButtonLoader('', 'remove__loader');
                 ErrorStatusLog('ERROR!, Weather Data Failed to load due to network issues, Please try again!')
             }, 2000)
