@@ -248,22 +248,22 @@ document.querySelector('.fb-share-button').addEventListener('click', ()=>{
     FbShareDescription()
 })
 
-function FbShareDescription(mapImage, celciusTemperature, fahrenheit, description){
+function FbShareDescription(){
 // const head  = document.getElementsByTagName('head')[0]
         const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
         const WeatherDataFromLocalstorage =      localStorage.getItem('WeatherData');
         const mapImageFromLocalstorage =         localStorage.getItem('mapImage');
 
         const placesearchQuery =         JSON.parse(placesearchQueryFromLocalstorage);
-        const mapImage =                 JSON.parse(mapImageFromLocalstorage);
+        const mapImagefromdb =                 JSON.parse(mapImageFromLocalstorage);
         const weatherData =              JSON.parse(WeatherDataFromLocalstorage);
 
-        const celciusTemperature = Math.round(parseFloat(weatherData.main.temp) - 273.15);
-        const fahrenheit = Math.round(((parseFloat(weatherData.main.temp) - 273.15) * 1.8) + 32);
-        const description = weatherData.weather[0].description;
+        const celciusTemperatureDB = Math.round(parseFloat(weatherData.main.temp) - 273.15);
+        const fahrenheitDB = Math.round(((parseFloat(weatherData.main.temp) - 273.15) * 1.8) + 32);
+        const descriptionDB = weatherData.weather[0].description;
 
-        const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, current weather condition  ${description}`;
-        const image = `${mapImage}`;
+        const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperatureDB}°C/${fahrenheitDB}°F, current weather condition  ${descriptionDB}`;
+        const image = `${mapImagefromdb.url}`;
 
         shareOverrideOGMeta(ogDescription,image);
 
@@ -303,7 +303,7 @@ function shareOverrideOGMeta(overrideDescription, overrideImage)
     });
 }
 
-function getWeather(lat, lon, mapImage) {
+function getWeather(lat, lon) {
     var key = '820fbadeb36dd9e325e2ede7deca57b5';
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
         .then(function (resp) {
