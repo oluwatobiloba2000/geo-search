@@ -225,7 +225,7 @@ function fetchData() {
             }).catch(function(e){
                 searchButtonLoader('', 'remove__loader');
                 ActivityLogLoader('', 'close')
-                ErrorStatusLog(e);
+                ErrorStatusLog('ERROR!, Map Data Failed to load due to network issues, Please try again!');
                return console.log(e);
             })
 
@@ -244,23 +244,25 @@ function fetchData() {
 }
 
 function FbShareDescription(mapImage, celciusTemperature, fahrenheit, description){
-const head  = document.getElementsByTagName('head')[0]
+// const head  = document.getElementsByTagName('head')[0]
 const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
 const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
-    if(head.childNodes.length >= 45){
-        head.removeChild(head.childNodes[44])
-        head.removeChild(head.childNodes[43])
-    }
-  const metaForImage = document.createElement('meta');
-  metaForImage.setAttribute('property', 'content')
-  metaForImage.property = "og:image";
-  metaForImage.content = `${mapImage}`;
-  document.getElementsByTagName('head')[0].appendChild(metaForImage);
-  const metaForWeatherDescription = document.createElement('meta');
-  metaForWeatherDescription.setAttribute('property', 'content')
-  metaForWeatherDescription.property = "og:description";
-  metaForWeatherDescription.content = `The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com`;
-  document.getElementsByTagName('head')[0].appendChild(metaForWeatherDescription);
+   $('meta[property="og:image"]').replaceWith(`<meta property="og:image" content="${mapImage}">`);
+   $('meta[property="og:description"]').replaceWith(`<meta property="og:description" content="The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com">`);
+//     if(head.childNodes.length >= 45){
+//         head.removeChild(head.childNodes[44])
+//         head.removeChild(head.childNodes[43])
+//     }
+//   const metaForImage = document.createElement('meta');
+//   metaForImage.setAttribute('property', 'content')
+//   metaForImage.property = "og:image";
+//   metaForImage.content = `${mapImage}`;
+//   document.getElementsByTagName('head')[0].appendChild(metaForImage);
+//   const metaForWeatherDescription = document.createElement('meta');
+//   metaForWeatherDescription.setAttribute('property', 'content')
+//   metaForWeatherDescription.property = "og:description";
+//   metaForWeatherDescription.content = `The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com`;
+//   document.getElementsByTagName('head')[0].appendChild(metaForWeatherDescription);
 }
 
 function getWeather(lat, lon, mapImage) {
