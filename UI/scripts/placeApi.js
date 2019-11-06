@@ -4,9 +4,9 @@ const button = document.getElementById('search__btn');
 const autocomplete = new google.maps.places.Autocomplete(inputforMap);
 
 
-button.addEventListener('click', () => {
+button.addEventListener('click', () => {  
     getQuery();
-}, )
+})
 
 document.getElementById('search__bar').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -221,7 +221,7 @@ function fetchData() {
                 OkayStatusLog('Map loaded sucessfully ..............');
                 mapContainer.innerHTML =`<img src="${data.url}" alt="map showing the place you searched">`
 
-                getWeather(lat, lng)
+                getWeather(lat, lng, data);
             }).catch(function(e){
                 searchButtonLoader('', 'remove__loader');
                 ActivityLogLoader('', 'close')
@@ -243,7 +243,27 @@ function fetchData() {
     }, 2000)
 }
 
-function getWeather(lat, lon) {
+function FbShareDescription(mapImage, celciusTemperature, fahrenheit, description){
+const head  = document.getElementsByTagName('head')
+const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
+const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
+    if(head.childNodes.length >= 45){
+        head.removeChild(head.childNodes[44])
+        head.removeChild(head.childNodes[43])
+    }
+  const metaForImage = document.createElement('meta');
+  metaForImage.setAttribute('property', 'content')
+  metaForImage.property = "og:image";
+  metaForImage.content = `${mapImage}`;
+  document.getElementsByTagName('head')[0].appendChild(metaForImage);
+  const metaForWeatherDescription = document.createElement('meta');
+  metaForWeatherDescription.setAttribute('property', 'content')
+  metaForWeatherDescription.property = "og:description";
+  metaForWeatherDescription.content = `The weather condition in ${placesearchQuery} is ${celciusTemperature}/${fahrenheit}, ${description} Source :- https://geo-search.netlify.com`;
+  document.getElementsByTagName('head')[0].appendChild(metaForWeatherDescription);
+}
+
+function getWeather(lat, lon, mapImage) {
     var key = '820fbadeb36dd9e325e2ede7deca57b5';
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
         .then(function (resp) {
@@ -267,6 +287,9 @@ function getWeather(lat, lon) {
             const description = data.weather[0].description;
             const icon = data.weather[0].icon;
             const date = new Date().toDateString();
+
+               FbShareDescription(mapImage, celciusTemperature, fahrenheit, description);
+
             document.querySelector('.weather__icon').innerHTML = `<img src="https://openweathermap.org/img/w/${icon}.png" alt="${description}">`;
             document.querySelector('.today').innerText = `Today`
             document.querySelector('.today__date__words').innerHTML = `${date}`;
