@@ -247,8 +247,14 @@ function FbShareDescription(mapImage, celciusTemperature, fahrenheit, descriptio
 // const head  = document.getElementsByTagName('head')[0]
 const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
 const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
-   $('meta[property="og:image"]').replaceWith(`<meta property="og:image" content="${mapImage}">`);
-   $('meta[property="og:description"]').replaceWith(`<meta property="og:description" content="The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com">`);
+
+const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, current weather condition  ${description}`;
+const image = `${mapImage}`;
+
+shareOverrideOGMeta(ogDescription,image);
+
+//    $('meta[property="og:image"]').replaceWith(`<meta property="og:image" content="${mapImage}">`);
+//    $('meta[property="og:description"]').replaceWith(`<meta property="og:description" content="The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com">`);
 //     if(head.childNodes.length >= 45){
 //         head.removeChild(head.childNodes[44])
 //         head.removeChild(head.childNodes[43])
@@ -263,6 +269,24 @@ const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
 //   metaForWeatherDescription.property = "og:description";
 //   metaForWeatherDescription.content = `The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com`;
 //   document.getElementsByTagName('head')[0].appendChild(metaForWeatherDescription);
+}
+
+function shareOverrideOGMeta(overrideDescription, overrideImage)
+{
+    FB.ui({
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+            object: {
+                'og:description': overrideDescription,
+                'og:image': overrideImage
+            }
+        })
+    },
+    function (response) {
+        okay(response);
+    // Action after response
+    });
 }
 
 function getWeather(lat, lon, mapImage) {
