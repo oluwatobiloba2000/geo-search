@@ -244,7 +244,7 @@ function fetchData() {
 }
 
 function FbShareDescription(mapImage, celciusTemperature, fahrenheit, description){
-const head  = document.getElementsByTagName('head')
+const head  = document.getElementsByTagName('head')[0]
 const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
 const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
     if(head.childNodes.length >= 45){
