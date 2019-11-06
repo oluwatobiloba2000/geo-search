@@ -221,7 +221,8 @@ function fetchData() {
                 OkayStatusLog('Map loaded sucessfully ..............');
                 mapContainer.innerHTML =`<img src="${data.url}" alt="map showing the place you searched">`
 
-                getWeather(lat, lng, data);
+                localStorage.setItem('mapImage', JSON.stringify(data))
+                getWeather(lat, lng);
             }).catch(function(e){
                 searchButtonLoader('', 'remove__loader');
                 ActivityLogLoader('', 'close')
@@ -243,15 +244,28 @@ function fetchData() {
     }, 2000)
 }
 
+document.querySelector('.fb-share-button').addEventListener('click', ()=>{
+    FbShareDescription()
+})
+
 function FbShareDescription(mapImage, celciusTemperature, fahrenheit, description){
 // const head  = document.getElementsByTagName('head')[0]
-const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
-const placesearchQuery = JSON.parse(placesearchQueryFromLocalstorage);
+        const placesearchQueryFromLocalstorage = localStorage.getItem('place-search-query');
+        const WeatherDataFromLocalstorage =      localStorage.getItem('WeatherData');
+        const mapImageFromLocalstorage =         localStorage.getItem('mapImage');
 
-const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, current weather condition  ${description}`;
-const image = `${mapImage}`;
+        const placesearchQuery =         JSON.parse(placesearchQueryFromLocalstorage);
+        const mapImage =                 JSON.parse(mapImageFromLocalstorage);
+        const weatherData =              JSON.parse(WeatherDataFromLocalstorage);
 
-shareOverrideOGMeta(ogDescription,image);
+        const celciusTemperature = Math.round(parseFloat(weatherData.main.temp) - 273.15);
+        const fahrenheit = Math.round(((parseFloat(weatherData.main.temp) - 273.15) * 1.8) + 32);
+        const description = weatherData.weather[0].description;
+
+        const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, current weather condition  ${description}`;
+        const image = `${mapImage}`;
+
+        shareOverrideOGMeta(ogDescription,image);
 
 //    $('meta[property="og:image"]').replaceWith(`<meta property="og:image" content="${mapImage}">`);
 //    $('meta[property="og:description"]').replaceWith(`<meta property="og:description" content="The weather condition in ${placesearchQuery} is ${celciusTemperature}°C/${fahrenheit}°F, ${description} Source :- https://geo-search.netlify.com">`);
@@ -313,8 +327,8 @@ function getWeather(lat, lon, mapImage) {
             const description = data.weather[0].description;
             const icon = data.weather[0].icon;
             const date = new Date().toDateString();
-
-               FbShareDescription(mapImage.url, celciusTemperature, fahrenheit, description);
+            localStorage.setItem('WeatherData', JSON.stringify(data))
+            //    FbShareDescription(mapImage.url, celciusTemperature, fahrenheit, description);
 
             document.querySelector('.weather__icon').innerHTML = `<img src="https://openweathermap.org/img/w/${icon}.png" alt="${description}">`;
             document.querySelector('.today').innerText = `Today`
