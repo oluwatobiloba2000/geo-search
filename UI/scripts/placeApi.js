@@ -302,7 +302,7 @@ function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, o
         })
     },
     function (response) {
-        okay(response);
+        OkayStatusLog(response);
     // Action after response
     });
 }
