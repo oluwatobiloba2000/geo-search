@@ -262,7 +262,7 @@ function FbShareDescription(){
         const fahrenheitDB = Math.round(((parseFloat(weatherData.main.temp) - 273.15) * 1.8) + 32);
         const descriptionDB = weatherData.weather[0].description;
 
-        const url = `https://geo-search.netlify.com`
+        const url = `${mapImagefromdb}`
         const title = `Geo Search || search for any location`
         const ogDescription = `The temperature in ${placesearchQuery} is ${celciusTemperatureDB}°C/${fahrenheitDB}°F, current weather condition  ${descriptionDB}`;
         const image = `${mapImagefromdb}`;
@@ -291,7 +291,7 @@ function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, o
 {
     FB.ui({
         method: 'share_open_graph',
-        action_type: 'og.shares',
+        action_type: 'og.likes',
         action_properties: JSON.stringify({
             object: {
                 'og:url': overrideLink,
