@@ -291,7 +291,7 @@ function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, o
 {
     FB.ui({
         method: 'share_open_graph',
-        action_type: 'og.likes',
+        action_type: 'og.shares',
         action_properties: JSON.stringify({
             object: {
                 'og:url': overrideLink,
