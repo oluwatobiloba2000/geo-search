@@ -315,15 +315,16 @@ nav {
     justify-content: space-evenly;
 }
 
-.image__location {
-    width: 30%;
+.location__images>img{
+        width: 90%;
+        height: 176px;
     /* box-shadow: 1px 2px 6px #00000045; */
     transition: 0.5s ease 0.2s;
 }
 
-.image__location:hover {
+.location__images>img:hover {
     cursor: pointer;
-    width: 218px;
+    width: 100%;
     box-shadow: 3px 3px 3px 1px #00000045;
 }
 
