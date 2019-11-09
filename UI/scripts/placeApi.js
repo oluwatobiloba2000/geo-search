@@ -1,8 +1,11 @@
 const input = document.getElementById('search__bar');
 const inputforMap = document.getElementById('search__bar')
 const button = document.getElementById('search__btn');
-// const autocomplete = new google.maps.places.Autocomplete(inputforMap);
+const autocomplete = new google.maps.places.Autocomplete(inputforMap);
 
+function reload(){
+    location.reload();
+}
 
 button.addEventListener('click', () => {
     getQuery();
