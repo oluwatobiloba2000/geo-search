@@ -1,10 +1,10 @@
 const input = document.getElementById('search__bar');
 const inputforMap = document.getElementById('search__bar')
 const button = document.getElementById('search__btn');
-const autocomplete = new google.maps.places.Autocomplete(inputforMap);
+// const autocomplete = new google.maps.places.Autocomplete(inputforMap);
 
 
-button.addEventListener('click', () => {  
+button.addEventListener('click', () => {
     getQuery();
 })
 
@@ -20,6 +20,7 @@ function ModalActivityLog(open, close) {
         modal.style.display = 'block';
         return setTimeout(() => {
             modal.style.opacity = '1';
+            document.querySelector('.loader__logo').style.display = 'none';
         }, 1000)
     } else if (close) {
         let modal = document.querySelector('.error__loader');
@@ -206,7 +207,7 @@ function fetchData() {
         });
 
         function LoadMap(lat, lng) {
-            let mapContainer = document.getElementById('map');
+            // let mapContainer = document.querySelector('.location__images');
             var mapProp = {
                 center: new google.maps.LatLng(lat, lng),
                 zoom: 9,
