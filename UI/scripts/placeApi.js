@@ -207,19 +207,19 @@ function fetchData() {
 
         function LoadMap(lat, lng) {
             let mapContainer = document.getElementById('map');
-            // var mapProp = {
-            //     center: new google.maps.LatLng(lat, lng),
-            //     zoom: 9,
-            //     mapTypeId: google.maps.MapTypeId.ROADMAP
-            // };
-            // var map = new google.maps.Map(document.getElementById("map"), mapProp);
-            // var markerCenter = new google.maps.LatLng(lat, lng);
-            // // console.log(lat, lng)
+            var mapProp = {
+                center: new google.maps.LatLng(lat, lng),
+                zoom: 9,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var markerCenter = new google.maps.LatLng(lat, lng);
+            // console.log(lat, lng)
             // https://www.mapquestapi.com/staticmap/v5/map?key=H1snoR7HAMGka2pLiA1cDnQiU2mVEc5x&locations=47.603229,-122.33028&size=900,500@2x
             fetch(`https://www.mapquestapi.com/staticmap/v5/map?key=H1snoR7HAMGka2pLiA1cDnQiU2mVEc5x&locations=${lat},${lng}&size=1100,500@2x`)
             .then(function(data){
                 OkayStatusLog('Map loaded sucessfully ..............');
-                mapContainer.innerHTML =`<img src="${data.url}" alt="map showing the place you searched">`
+                // mapContainer.innerHTML =`<img src="${data.url}" alt="map showing the place you searched">`
 
                 localStorage.setItem('mapImage', JSON.stringify(data.url))
                 getWeather(lat, lng);
@@ -234,11 +234,11 @@ function fetchData() {
                 searchButtonLoader('', 'remove__loader');
                 return ErrorStatusLog('Sorry!, No data for this location')
             }
-            // var marker = new google.maps.Marker({
-            //     position: markerCenter,
-            //     animation: google.maps.Animation.BOUNCE
-            // });
-            // marker.setMap(map);
+            var marker = new google.maps.Marker({
+                position: markerCenter,
+                animation: google.maps.Animation.BOUNCE
+            });
+            marker.setMap(map);
         }
         //settimeout close
     }, 2000)
