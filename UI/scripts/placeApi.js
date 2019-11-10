@@ -23,7 +23,7 @@ function ModalActivityLog(open, close) {
         modal.style.display = 'block';
         return setTimeout(() => {
             modal.style.opacity = '1';
-            document.querySelector('.loader__logo').style.display = 'none';
+            document.querySelector('.spinner').style.display = 'none';
         }, 1000)
     } else if (close) {
         let modal = document.querySelector('.error__loader');

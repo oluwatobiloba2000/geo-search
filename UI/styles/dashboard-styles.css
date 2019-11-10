@@ -37,6 +37,7 @@ body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
+/* TODO: Done */
 
 nav {
     display: flex;
@@ -144,6 +145,7 @@ nav {
     z-index: 10;
     left: 11px;
 }
+/* TODO: done */
 
 .logged__in__user {
     display: flex;
@@ -539,6 +541,8 @@ iframe {
     display: block;
     opacity: 1;
 }
+
+/* TODO: DONE */
 
 /* @keyframes opacity{
     0%{
